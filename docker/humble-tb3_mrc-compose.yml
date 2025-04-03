@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  humble-tb3_mrc-docker:
+    build:
+      context: ..
+      dockerfile: docker/humble-tb3_mrc.Dockerfile
+      target: humble-tb3_mrc
+      args:
+        - WS_DIR=${WS_DIR}
+        - USERNAME=${USERNAME_DOCKER}
+        - userid=${userid}
+        - groupid=${groupid}
+    container_name: humble-tb3_mrc-container
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+      # GPU access
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_VISIBLE_DEVICES=all
+    runtime: nvidia
+    image: humble-tb3_mrc-image:latest
+    # Required for communicating over the network
+    network_mode: "host"
+    ipc: "host"
+    pid: "host"
+    # Required for accessing hardware
+    privileged: true
+    tty: true
+    stdin_open: true
+    volumes:
+      - ../src:/home/${USERNAME_DOCKER}/${WS_DIR}/src
+      - ../config:/home/${USERNAME_DOCKER}/${WS_DIR}/config
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+
