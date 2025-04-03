@@ -142,7 +142,7 @@ RUN source /opt/ros/humble/setup.bash && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && \
     cd ~/tb3_ros_driver && \
-    colcon build -j2 --symlink-install
+    colcon build --parallel-workers 2 --symlink-install
 
 RUN echo "source $HOME/tb3_ros_driver/install/setup.bash" >> $HOME/.bashrc
 
