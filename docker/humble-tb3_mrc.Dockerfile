@@ -141,6 +141,7 @@ RUN source /opt/ros/humble/setup.bash && \
     git clone -b humble https://github.com/ROBOTIS-GIT/DynamixelSDK.git && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && \
+    git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git && \
     cd ~/tb3_ros_driver && \
     colcon build --parallel-workers 2 --symlink-install
 

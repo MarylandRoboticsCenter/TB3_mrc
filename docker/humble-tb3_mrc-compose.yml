@@ -14,10 +14,6 @@ services:
     environment:
       - DISPLAY=$DISPLAY
       - QT_X11_NO_MITSHM=1
-      # GPU access
-      - NVIDIA_DRIVER_CAPABILITIES=all
-      - NVIDIA_VISIBLE_DEVICES=all
-    runtime: nvidia
     image: humble-tb3_mrc-image:latest
     # Required for communicating over the network
     network_mode: "host"
